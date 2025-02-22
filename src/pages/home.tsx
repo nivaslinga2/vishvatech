@@ -29,13 +29,7 @@ function Mainpage() {
     restDelta: 0.001
   });
 
- // Smooth scroll animation for rocket
- const rocketY = useTransform(scrollY, [0, 800], [0, -200]);
- const smoothRocketY = useSpring(rocketY, {
-   stiffness: 40,
-   damping: 60,
-   restDelta: 0.001
- });
+ 
 
   // Floating animation for elements
   const floatingAnimation = {
@@ -190,14 +184,13 @@ function Mainpage() {
         <div className="container mx-auto px-4">
           {/* Header */}
           <motion.img
-            src={header}
-            alt="header"
-            className="h-30 mt-4 mb-4 mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          />
-
+  src={header}
+  alt="header"
+  className="w-100 h-100  md:h-80   mt-4 mb-4 mx-auto" // Responsive sizing
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+/>
           {/* Animated Shark with scroll tracking */}
           <motion.img
             src={shark}
@@ -209,8 +202,8 @@ function Mainpage() {
           />
 
           {/* Hexagon Grid */}
-          <div className="flex justify-center items-center mr-10">
-            <div className="relative h-[400px] w-[400px] md:h-[400px] md:w-[400px]">
+          <div className="flex justify-center items-center -ml-20">
+            <div className="relative h-[400px] w-[250px] md:h-[400px] md:w-[400px]">
               <div className="grid grid-cols-3 grid-rows-3 gap-4 w-full h-full">
                 {/* Hexagon Items */}
                 <motion.div
@@ -271,7 +264,7 @@ function Mainpage() {
           style={{ 
             transform: "rotate(-45deg)", 
             transformOrigin: "center",
-            y: smoothRocketY 
+           
           }}
           animate={floatingAnimation}
           whileHover={{ scale: 1.2, rotate: -35 }}

@@ -12,10 +12,10 @@ function Contact() {
           <p className="text-gray-600 mb-4">
             For clarifications about the event, feel free to reach out to us!
           </p>
-          <p className="text-gray-600">
-            You can contact us at (your email/phone number) or visit our website (your website link).
-            We're happy to assist you and ensure you have a great experience!
-          </p>
+          <p className="contact-text">
+          You can contact us at <a href="mailto:ceo@vishva.co" className="contact-link">ceo@vishva.co</a> or <a href="mailto:incubationmanager@vishva.co" className="contact-link">incubationmanager@vishva.co</a>.
+  We're happy to assist you and ensure you have a great experience!
+</p>
         </div>
 
         {/* Get In Touch Section */}
