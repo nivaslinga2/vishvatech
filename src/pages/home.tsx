@@ -168,7 +168,7 @@ function Mainpage() {
      <motion.img
       src={shark}
       alt="shark"
-      className="absolute left-0 top-1/2 mt-12 mb-12 -ml-16 sm:top-1/2 transform -translate-y-1/2 h-24 w-24 sm:h-40 sm:w-40 md:h-52 md:w-52"
+      className="absolute left-0 top-1/2 mt-12 mb-8 -ml-16 sm:top-1/3 transform -translate-y-1/2 h-24 w-24 sm:h-40 sm:w-40 md:h-52 md:w-52"
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
@@ -220,7 +220,7 @@ function Mainpage() {
   <img
     src={rocket}
     alt="rocket"
-    className="absolute right-10 top-1/2 mt-12 mb-12 h-24 w-24 md:h-44 md:w-44  sm-bottom-1/4 text-[#103B8C] animate-float"
+    className="absolute right-10 top-1/2 mt-12 mb-12 h-24 w-24 md:h-44 md:w-44  sm-bottom-1/3 text-[#103B8C] animate-float"
     style={{ transform: "rotate(-45deg)", transformOrigin: "center" }}
   />
 </section>
