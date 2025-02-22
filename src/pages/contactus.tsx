@@ -1,4 +1,3 @@
-import React from 'react';
 import { Mail, MapPin, Phone, Facebook, Twitter, Youtube, Instagram } from 'lucide-react';
 
 const map = "/map.png";

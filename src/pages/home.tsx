@@ -1,12 +1,11 @@
 import { useState } from "react"; // Add useState for hamburger menu
-import { useScroll, motion, useTransform } from "framer-motion";
+import {  motion } from "framer-motion";
 import './home.css';
 import { Button } from "@/components/ui/button";
-import { Rocket, Lightbulb, Home, Users, MessageSquare, Briefcase, Bone as Drone, Cpu, Sparkles, MessageCircle, Router } from "lucide-react";
+import { Rocket,  Users, MessageSquare, Briefcase, Bone as Drone, Cpu, Sparkles, MessageCircle } from "lucide-react";
 const rocket = "/rocket.png";
 const bulb = "/bulb.jpg";
 const shark = "/shark.jpg";
-const arrow = "/arrow.jpg";
 const logo = "/logo.jpg";
 const header = "/header.png";
 const man = "/man.jpg";
@@ -27,10 +26,10 @@ function Mainpage() {
   };
 
   // Track scroll progress within the Sharktank section
-  const { scrollYProgress } = useScroll();
+  
 
   // Map scroll progress to shark's vertical position
-  const sharkY = useTransform(scrollYProgress, [0, 1], [0, -200]); // Moves up by 200px
+ 
 
   return (
     <div className="min-h-screen bg-white">
