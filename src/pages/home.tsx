@@ -440,7 +440,7 @@ function Mainpage() {
       <section className="py-16 bg-white text-white -mt-40">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <img src={special} alt="special" className="h-100 ml-4" />
+            <img src={special} alt="special" className="h-100 ml-8" />
             <h2 className="text-3xl md:text-4xl text-black m-8">Secure your spot at Vishvatech 3.0 now!</h2>
             <a href="https://form.jotform.com/250510451796052" target="_blank" rel="noopener noreferrer">
               <Button className="bg-[#103B8C] hover:bg-blue-700 px-5 py-2">Register</Button>
