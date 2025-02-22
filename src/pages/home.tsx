@@ -29,6 +29,14 @@ function Mainpage() {
     restDelta: 0.001
   });
 
+ // Smooth scroll animation for rocket
+ const rocketY = useTransform(scrollY, [0, 800], [0, -200]);
+ const smoothRocketY = useSpring(rocketY, {
+   stiffness: 40,
+   damping: 60,
+   restDelta: 0.001
+ });
+
   // Floating animation for elements
   const floatingAnimation = {
     y: [0, -20, 0],
@@ -41,12 +49,12 @@ function Mainpage() {
 
   // Hexagon hover animation
   const hexagonHover = {
-    scale: 1.1,
-    rotate: 10,
+    scale: 1.1, // Increase size by 10%
+     // Optional: Add a slight rotation
     transition: {
       type: "spring",
-      stiffness: 300
-    }
+      stiffness: 300,
+    },
   };
 
   const toggleMenu = () => {
@@ -201,7 +209,7 @@ function Mainpage() {
           />
 
           {/* Hexagon Grid */}
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mr-10">
             <div className="relative h-[400px] w-[400px] md:h-[400px] md:w-[400px]">
               <div className="grid grid-cols-3 grid-rows-3 gap-4 w-full h-full">
                 {/* Hexagon Items */}
@@ -214,10 +222,10 @@ function Mainpage() {
                   <div className="text-xs">investors</div>
                 </motion.div>
                 <motion.div
-                  className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-3 row-start-1"
+                  className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-3 row-start-1 "
                   whileHover={hexagonHover}
                 >
-                  <MessageSquare className="h-6 w-6 md:h-9 md:w-9 mb-2" />
+                  <MessageSquare className="h-4 w-4 md:h-8 md:w-8 mb-2" />
                   <div className="text-sm md:text-md font-semibold">3 panel</div>
                   <div className="text-xs">discussions</div>
                 </motion.div>
@@ -255,6 +263,19 @@ function Mainpage() {
             <Countdown />
           </div>
         </div>
+
+        <motion.img
+          src={rocket}
+          alt="rocket"
+          className="absolute right-4 top-1/2 mt-16 mb-12 h-16 w-16 md:h-44 md:w-44 sm-bottom-1/3 text-[#103B8C]"
+          style={{ 
+            transform: "rotate(-45deg)", 
+            transformOrigin: "center",
+            y: smoothRocketY 
+          }}
+          animate={floatingAnimation}
+          whileHover={{ scale: 1.2, rotate: -35 }}
+        />
       </section>
 
       {/* Workshops Section */}
@@ -458,7 +479,8 @@ function Mainpage() {
                 placeholder="Enter your Email..."
                 className="flex-1 p-3 rounded-l-lg text-gray-700 focus:outline-none"
               />
-              <Button className="bg-[#103B8C] hover:bg-blue-700 px-5 py-2 rounded-r-lg">Subscribe</Button>
+              <br />
+              <Button className="bg-[#103B8C] hover:bg-blue-700 px-5 py-2 rounded-r-lg mr-8">Subscribe</Button>
             </div>
           </div>
         </div>
