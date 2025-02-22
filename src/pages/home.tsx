@@ -1,8 +1,10 @@
-import { useState } from "react"; // Add useState for hamburger menu
-import {  motion } from "framer-motion";
+import { useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import './home.css';
 import { Button } from "@/components/ui/button";
-import { Rocket,  Users, MessageSquare, Briefcase, Bone as Drone, Cpu, Sparkles, MessageCircle } from "lucide-react";
+import { Rocket, Users, MessageSquare, Briefcase, Bone as Drone, Cpu, Sparkles, MessageCircle } from "lucide-react";
+import Countdown from "./countdown";
+
 const rocket = "/rocket.png";
 const bulb = "/bulb.jpg";
 const shark = "/shark.jpg";
@@ -14,31 +16,51 @@ const soap = "/soap.jpg";
 const nvidia = "/nvidia.jpg";
 const sky = "/sky.jpg";
 const special = "/special.png";
-const icons = "/icons.png";
-
-import Countdown from './countdown';
 
 function Mainpage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
+
+  // Smooth scroll animation for shark
+  const sharkY = useTransform(scrollY, [0, 800], [0, 400]);
+  const smoothSharkY = useSpring(sharkY, {
+    stiffness: 40,
+    damping: 60,
+    restDelta: 0.001
+  });
+
+  // Floating animation for elements
+  const floatingAnimation = {
+    y: [0, -20, 0],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  };
+
+  // Hexagon hover animation
+  const hexagonHover = {
+    scale: 1.1,
+    rotate: 10,
+    transition: {
+      type: "spring",
+      stiffness: 300
+    }
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Track scroll progress within the Sharktank section
-  
-
-  // Map scroll progress to shark's vertical position
- 
-
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Navigation */}
       <nav className="fixed w-full bg-white border-b z-50">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           {/* Logo Section */}
           <div className="flex items-center">
-            <img src={logo} alt="Vishvatech Logo" className="h-12 w-auto" />
+            <img src={logo} alt="Vishvatech Logo" className="h-8 w-auto md:h-12" />
           </div>
 
           {/* Hamburger Menu for Mobile */}
@@ -50,7 +72,7 @@ function Mainpage() {
             </button>
           </div>
 
-          {/* Navigation Links (Visible on Medium Screens and Above) */}
+          {/* Navigation Links (Desktop) */}
           <div className="hidden md:flex items-center space-x-8">
             <a href="#home" className="text-[#103B8C] hover:text-blue-700 font-bold">Home</a>
             <a href="https://open.spotify.com/episode/16xQdRf3oi299XUmFtREDB?si=OF7p_1egS_GR6qGrNkPIvA" className="text-[#103B8C] hover:text-blue-700 font-bold">Podcast</a>
@@ -58,12 +80,12 @@ function Mainpage() {
             <a href="/contact" className="text-[#103B8C] hover:text-blue-700 font-bold">Contact Us</a>
             <a href="#Team" className="text-[#103B8C] hover:text-blue-700 font-bold">Team</a>
             <a href="https://form.jotform.com/250510451796052" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-[#103B8C] hover:bg-blue-700 px-5 py-2">Register</Button>
+              <Button className="bg-[#103B8C] hover:bg-blue-700 px-4 py-2">Register</Button>
             </a>
           </div>
         </div>
 
-        {/* Mobile Menu (Conditionally Rendered) */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="flex flex-col items-center space-y-4 py-4">
@@ -73,7 +95,7 @@ function Mainpage() {
               <a href="/contact" className="text-[#103B8C] hover:text-blue-700 font-bold">Contact Us</a>
               <a href="#Team" className="text-[#103B8C] hover:text-blue-700 font-bold">Team</a>
               <a href="https://form.jotform.com/250510451796052" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#103B8C] hover:bg-blue-700 px-5 py-2">Register</Button>
+                <Button className="bg-[#103B8C] hover:bg-blue-700 px-4 py-2">Register</Button>
               </a>
             </div>
           </div>
@@ -135,96 +157,108 @@ function Mainpage() {
           </motion.div>
         </div>
 
-        {/* Rocket Image */}
+        {/* Animated Rocket */}
         <motion.img
           src={rocket}
           alt="rocket"
-          className="absolute left-4 bottom-20 md:bottom-7 h-16 w-16 md:h-40 md:w-40 text-blue-600 animate-float"
+          className="absolute left-4 bottom-20 md:bottom-7 h-16 w-16 md:h-40 md:w-40 text-blue-600"
           style={{ transform: "rotate(-45deg)", transformOrigin: "center" }}
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          animate={floatingAnimation}
+          whileHover={{ scale: 1.2, rotate: -35 }}
         />
 
-        {/* Bulb Image */}
+        {/* Animated Bulb */}
         <motion.img
           src={bulb}
           alt="bulb"
-          className="absolute right-4 bottom-20 md:bottom-7 h-16 w-16 md:h-40 md:w-40 text-blue-600 animate-pulse"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="absolute right-4 bottom-20 md:bottom-7 h-16 w-16 md:h-40 md:w-40 text-blue-600"
+          animate={floatingAnimation}
+          whileHover={{ scale: 1.2, rotate: 10 }}
         />
       </section>
 
       {/* Sharktank Section */}
-      <section id="sharktank" className="min-h-screen py-24 relative -mt-40">
-  <div className="container mx-auto px-4">
-    {/* Header */}
-    <img src={header} alt="header" className="h-30 mt-4 mb-4 mx-auto" />
-    
-     {/* Shark Image */}
-     <motion.img
-      src={shark}
-      alt="shark"
-      className="absolute left-0 top-1/2 mt-12 mb-8 -ml-16 sm:top-1/3 transform -translate-y-1/2 h-24 w-24 sm:h-40 sm:w-40 md:h-52 md:w-52"
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-      whileHover={{ scale: 1.1, rotate: -5 }}
-    />
+      <section id="sharktank" className="py-24 relative -mt-40">
+        <div className="container mx-auto px-4">
+          {/* Header */}
+          <motion.img
+            src={header}
+            alt="header"
+            className="h-30 mt-4 mb-4 mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          />
 
-    {/* Hexagon Grid */}
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="relative h-[300px] w-[300px] md:h-[500px] md:w-[500px]">
-        <div className="grid grid-cols-3 grid-rows-3 gap-4 w-full h-full">
-          {/* Hexagon Items */}
-          <div className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-1 row-start-1">
-            <Briefcase className="h-6 w-6 md:h-9 md:w-9 mb-2" />
-            <div className="text-sm md:text-md font-semibold">5+ top</div>
-            <div className="text-xs">investors</div>
+          {/* Animated Shark with scroll tracking */}
+          <motion.img
+            src={shark}
+            alt="shark"
+            className="absolute left-0 top-1/2 mt-12 mb-8 -ml-8 sm:top-1/3 transform -translate-y-1/2 h-24 w-24 sm:h-40 sm:w-40 md:h-52 md:w-52"
+            style={{ y: smoothSharkY }}
+            whileHover={{ scale: 1.1, rotate: -5 }}
+            whileTap={{ scale: 0.9 }}
+          />
+
+          {/* Hexagon Grid */}
+          <div className="flex justify-center items-center">
+            <div className="relative h-[400px] w-[400px] md:h-[400px] md:w-[400px]">
+              <div className="grid grid-cols-3 grid-rows-3 gap-4 w-full h-full">
+                {/* Hexagon Items */}
+                <motion.div
+                  className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-1 row-start-1"
+                  whileHover={hexagonHover}
+                >
+                  <Briefcase className="h-6 w-6 md:h-9 md:w-9 mb-2" />
+                  <div className="text-sm md:text-md font-semibold">5+ top</div>
+                  <div className="text-xs">investors</div>
+                </motion.div>
+                <motion.div
+                  className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-3 row-start-1"
+                  whileHover={hexagonHover}
+                >
+                  <MessageSquare className="h-6 w-6 md:h-9 md:w-9 mb-2" />
+                  <div className="text-sm md:text-md font-semibold">3 panel</div>
+                  <div className="text-xs">discussions</div>
+                </motion.div>
+                <motion.div
+                  className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-2 row-start-2"
+                  whileHover={hexagonHover}
+                >
+                  <Users className="h-6 w-6 md:h-9 md:w-9 mb-2" />
+                  <div className="text-sm md:text-md font-semibold">15 startup</div>
+                  <div className="text-xs">founders</div>
+                </motion.div>
+                <motion.div
+                  className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-1 row-start-3"
+                  whileHover={hexagonHover}
+                >
+                  <Users className="h-6 w-6 md:h-9 md:w-9 mb-2" />
+                  <div className="text-sm md:text-md font-semibold">500+</div>
+                  <div className="text-xs">students</div>
+                </motion.div>
+                <motion.div
+                  className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-3 row-start-3"
+                  whileHover={hexagonHover}
+                >
+                  <Briefcase className="h-6 w-6 md:h-9 md:w-9 mb-2" />
+                  <div className="text-sm md:text-md font-semibold">10+</div>
+                  <div className="text-xs">corporate</div>
+                </motion.div>
+              </div>
+            </div>
           </div>
-          <div className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-3 row-start-1">
-            <MessageSquare className="h-6 w-6 md:h-9 md:w-9 mb-2" />
-            <div className="text-sm md:text-md font-semibold">3 panel</div>
-            <div className="text-xs">discussions</div>
-          </div>
-          <div className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-2 row-start-2">
-            <Users className="h-6 w-6 md:h-9 md:w-9 mb-2" />
-            <div className="text-sm md:text-md font-semibold">15 startup</div>
-            <div className="text-xs">founders</div>
-          </div>
-          <div className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-1 row-start-3">
-            <Users className="h-6 w-6 md:h-9 md:w-9 mb-2" />
-            <div className="text-sm md:text-md font-semibold">500+</div>
-            <div className="text-xs">students</div>
-          </div>
-          <div className="hexagon bg-[#103B8C] text-white flex flex-col justify-center items-center col-start-3 row-start-3">
-            <Briefcase className="h-6 w-6 md:h-9 md:w-9 mb-2" />
-            <div className="text-sm md:text-md font-semibold">10+</div>
-            <div className="text-xs">corporate</div>
+
+          {/* Countdown Section */}
+          <div className="text-center mt-24">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-wider">COUNTDOWN</h2>
+            <Countdown />
           </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    {/* Countdown Section */}
-    <div className="text-center mt-24">
-      <h2 className="text-3xl md:text-5xl font-bold tracking-wider">COUNTDOWN</h2>
-      <Countdown />
-    </div>
-  </div>
-
-  {/* Rocket Image */}
-  <img
-    src={rocket}
-    alt="rocket"
-    className="absolute right-10 top-1/2 mt-12 mb-12 h-24 w-24 md:h-44 md:w-44  sm-bottom-1/3 text-[#103B8C] animate-float"
-    style={{ transform: "rotate(-45deg)", transformOrigin: "center" }}
-  />
-</section>
       {/* Workshops Section */}
-      <section id="workshops" className="min-h-screen py-24 bg-white">
+      <section id="workshops" className="py-24 bg-white">
         <div className="container mx-auto px-4">
           {/* Entrepreneurship Master Class */}
           <div className="grid md:grid-cols-2 gap-8 mb-20">
@@ -392,12 +426,11 @@ function Mainpage() {
       <section className="py-16 bg-white text-white -mt-40">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <img src={special} alt="special" className="h-100" />
+            <img src={special} alt="special" className="h-100 ml-4" />
             <h2 className="text-3xl md:text-4xl text-black m-8">Secure your spot at Vishvatech 3.0 now!</h2>
             <a href="https://form.jotform.com/250510451796052" target="_blank" rel="noopener noreferrer">
               <Button className="bg-[#103B8C] hover:bg-blue-700 px-5 py-2">Register</Button>
             </a>
-            <img src={icons} alt="icons" className="-mb-20 h-100" />
           </div>
         </div>
       </section>
