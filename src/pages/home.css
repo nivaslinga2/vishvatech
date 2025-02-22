@@ -1,0 +1,11 @@
+.hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    width: 100px; /* Adjust size as needed */
+    height: 115px; /* Adjust size as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #103B8C;
+    color: white;
+    margin: 0 auto; /* Center hexagons */
+  }
