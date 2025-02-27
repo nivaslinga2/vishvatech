@@ -25,9 +25,6 @@ const Countdown = () => {
 
   return (
     <div className="text-center">
-      <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-white drop-shadow-lg mb-8">
-        COUNTDOWN
-      </h2>
       <div className="flex flex-col items-center justify-center  text-white p-5">
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-center text-3xl md:text-5xl font-semibold">
           {Object.entries(timeLeft).map(([label, value]) => (
