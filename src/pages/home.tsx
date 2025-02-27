@@ -22,7 +22,7 @@ function Mainpage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Ref for the Countdown section
-  const countdownRef = useRef(null);
+  const countdownRef = useRef<HTMLDivElement>(null);
 
   // Track scroll within the Countdown section
   const { scrollYProgress: countdownScroll } = useScroll({
@@ -31,7 +31,7 @@ function Mainpage() {
   });
 
   // Track scroll progress of the entire page
-  const { scrollYProgress: pageScroll } = useScroll();
+  // const { scrollYProgress: pageScroll } = useScroll();
 
   // Shark animation based on scroll within the Countdown section
   const sharkY = useTransform(countdownScroll, [0, 1], [0, 150]);
@@ -42,7 +42,7 @@ function Mainpage() {
   });
 
   // Rocket rotation based on page scroll
-  const rocketRotation = useTransform(pageScroll, [0, 1], [-45, 45]);
+  // const rocketRotation = useTransform(pageScroll, [0, 1], [-45, 45]);
 
   // Floating animation for elements
   const floatingAnimation = {
