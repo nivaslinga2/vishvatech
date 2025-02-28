@@ -722,11 +722,7 @@ function Mainpage() {
     </div>
     <div className="flex items-center space-x-4">
       <MessageSquare className="h-6 w-6 text-[#103B8C]" />
-      <p className="text-gray-700">ceo@vishva.co</p>
-    </div>
-    <div className="flex items-center space-x-4">
-      <Briefcase className="h-6 w-6 text-[#103B8C]" />
-      <p className="text-gray-700">+91 8712606487</p>
+      <p className="text-gray-700">vishvatech3.0@gmail.com</p>
     </div>
     <div className="flex items-center space-x-4">
       <Rocket className="h-7 w-9 text-[#103B8C]" />
