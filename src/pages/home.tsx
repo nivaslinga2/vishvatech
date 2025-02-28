@@ -113,7 +113,7 @@ function Mainpage() {
             <a href="#home" className="text-[#103B8C] hover:text-blue-700 font-bold">Home</a>
             <a href="https://open.spotify.com/episode/16xQdRf3oi299XUmFtREDB?si=OF7p_1egS_GR6qGrNkPIvA" className="text-[#103B8C] hover:text-blue-700 font-bold">Podcast</a>
             <a href="https://vishva.co" className="text-[#103B8C] hover:text-blue-700 font-bold">About</a>
-            <a href="/contact" className="text-[#103B8C] hover:text-blue-700 font-bold">Contact Us</a>
+            
             <a href="#Team" className="text-[#103B8C] hover:text-blue-700 font-bold">Team</a>
             <a href="https://form.jotform.com/250510451796052" target="_blank" rel="noopener noreferrer">
               <Button className="bg-[#103B8C] hover:bg-blue-700 px-4 py-2">Register</Button>
@@ -133,7 +133,7 @@ function Mainpage() {
               <a href="#home" className="text-[#103B8C] hover:text-blue-700 font-bold">Home</a>
               <a href="https://open.spotify.com/episode/16xQdRf3oi299XUmFtREDB?si=OF7p_1egS_GR6qGrNkPIvA" className="text-[#103B8C] hover:text-blue-700 font-bold">Podcast</a>
               <a href="https://vishva.co" className="text-[#103B8C] hover:text-blue-700 font-bold">About</a>
-              <a href="/contact" className="text-[#103B8C] hover:text-blue-700 font-bold">Contact Us</a>
+              
               <a href="#Team" className="text-[#103B8C] hover:text-blue-700 font-bold">Team</a>
               <a href="https://form.jotform.com/250510451796052" target="_blank" rel="noopener noreferrer">
                 <Button className="bg-[#103B8C] hover:bg-blue-700 px-4 py-2">Register</Button>
