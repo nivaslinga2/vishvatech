@@ -115,7 +115,7 @@ function Mainpage() {
             <a href="https://vishva.co" className="text-[#103B8C] hover:text-blue-700 font-bold">About</a>
             
             <a href="#Team" className="text-[#103B8C] hover:text-blue-700 font-bold">Team</a>
-            <a href="https://form.jotform.com/250510451796052" target="_blank" rel="noopener noreferrer">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiysKAzr738v8CUxTyK0CkI9AQ5Lz7y0jDkaYhC1Ynxjb6Jg/viewform?usp=header" target="_blank" rel="noopener noreferrer">
               <Button className="bg-[#103B8C] hover:bg-blue-700 px-4 py-2">Register</Button>
             </a>
           </motion.div>
@@ -135,7 +135,7 @@ function Mainpage() {
               <a href="https://vishva.co" className="text-[#103B8C] hover:text-blue-700 font-bold">About</a>
               
               <a href="#Team" className="text-[#103B8C] hover:text-blue-700 font-bold">Team</a>
-              <a href="https://form.jotform.com/250510451796052" target="_blank" rel="noopener noreferrer">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiysKAzr738v8CUxTyK0CkI9AQ5Lz7y0jDkaYhC1Ynxjb6Jg/viewform?usp=header" target="_blank" rel="noopener noreferrer">
                 <Button className="bg-[#103B8C] hover:bg-blue-700 px-4 py-2">Register</Button>
               </a>
             </div>
@@ -197,7 +197,7 @@ function Mainpage() {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              <a href="https://form.jotform.com/250510451796052" target="_blank" rel="noopener noreferrer">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiysKAzr738v8CUxTyK0CkI9AQ5Lz7y0jDkaYhC1Ynxjb6Jg/viewform?usp=header" target="_blank" rel="noopener noreferrer">
                 <Button className="bg-[#103B8C] hover:bg-blue-700 px-5 py-2 mb-12 p-6">Register</Button>
               </a>
             </motion.div>
@@ -634,7 +634,7 @@ function Mainpage() {
       {/* Functional Countdown Timer */}
       <Countdown />
 
-      <a href="https://form.jotform.com/250510451796052" target="_blank" rel="noopener noreferrer">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiysKAzr738v8CUxTyK0CkI9AQ5Lz7y0jDkaYhC1Ynxjb6Jg/viewform?usp=header" target="_blank" rel="noopener noreferrer">
         <Button className="bg-[#103B8C] hover:bg-blue-700 px-5 py-2 mt-8">Register</Button>
       </a>
     </div>
